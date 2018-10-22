@@ -2,6 +2,9 @@ package org.ashtray.mobile.scheduler.util;
 
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public final class Utils {
     
     public static String toString(Object any) {
@@ -11,6 +14,8 @@ public final class Utils {
             if (((String)any).length() == 0) {
                 return "NULL";
             }
+        } else if(any instanceof Date) {
+            return new SimpleDateFormat("HH:mm:ss.sss").format(any);
         }
         return any.toString();
     }
