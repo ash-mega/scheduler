@@ -1,5 +1,6 @@
 package org.ashtray.mobile.scheduler.task;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import org.ashtray.mobile.scheduler.MainActivity;
@@ -12,14 +13,11 @@ import static org.ashtray.mobile.scheduler.IConstants.ID_INT;
 
 public class WorkTask extends AsyncTask<Integer, Integer, Integer> {
 
-    private WeakReference<MainActivity> context;
-
     private NotificationCentre centre;
 
     private int max;
 
-    public WorkTask(MainActivity context) {
-        this.context = new WeakReference<>(context);
+    public WorkTask(Context context) {
         centre = new NotificationCentre(context);
     }
 
@@ -53,7 +51,6 @@ public class WorkTask extends AsyncTask<Integer, Integer, Integer> {
 //        Utils.log("onProgressUpdate:" + progress);
         float p = (1.0f - (float)progress / (float)max) * 100;
         int i = (int)p;
-        Utils.log("onProgressUpdate:" + i);
         centre.updateProgress(i);
     }
 

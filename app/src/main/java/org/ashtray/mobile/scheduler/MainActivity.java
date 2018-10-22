@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void start() {
-        startTask();
+        startJob();
     }
 
     private void stop() {

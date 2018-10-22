@@ -13,6 +13,7 @@ import org.ashtray.mobile.scheduler.R;
 import org.ashtray.mobile.scheduler.util.Utils;
 
 import static org.ashtray.mobile.scheduler.IConstants.CHANNEL_ID;
+import static org.ashtray.mobile.scheduler.IConstants.ID_INT;
 
 public class NotificationCentre {
 
@@ -27,7 +28,9 @@ public class NotificationCentre {
     }
 
     public void showNotification(int id) {
-        buildNotification();
+        if(currentNotification == null) {
+            buildNotification();
+        }
         notificationManager.notify(id,currentNotification);
     }
 
@@ -36,7 +39,9 @@ public class NotificationCentre {
     }
 
     public void updateProgress(int progress) {
-        content.setProgressBar(R.id.noti_progress,100,progress,false);
+        Utils.log(progress);
+        currentNotification.contentView.setProgressBar(R.id.noti_progress,100,progress,false);
+        showNotification(ID_INT);
     }
 
 

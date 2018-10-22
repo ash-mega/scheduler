@@ -22,7 +22,7 @@ public class Counter extends JobService {
     @Override
     public boolean onStartJob(JobParameters jobParameters) {
         Utils.log("onStartJob");
-
+        new WorkTask(this).execute(100);
         return START_RETURN;
     }
     
